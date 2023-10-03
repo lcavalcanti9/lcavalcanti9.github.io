@@ -1,2 +1,2 @@
-let level = 1;
-document.body.innerHTML = "<p>test<p>"
+var palace = document.getElementById("palace");
+var palacectx = palace.getContext("2d");
