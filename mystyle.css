@@ -1,8 +1,19 @@
 body{
     background-color:pink;
-    color:white;
+}
+h1,h2{
+    color:black;
+    text-align:center;
+    padding:5px;
 }
 #palace{
-    color: aliceblue;
-    background-color: aliceblue;
+    background-color: lightpink;
+    height: 90%;
+    width: 90%;
+    border:5px;
+    border-color:black;
+}
+#container{
+    text-align: center;
+    vertical-align: middle;
 }
