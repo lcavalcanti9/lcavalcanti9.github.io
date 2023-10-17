@@ -4,14 +4,9 @@ body{
 h1,h2{
     color:black;
     text-align:center;
-    padding:5px;
 }
 #palace{
-    background-color: lightpink;
-    height: 90%;
-    width: 90%;
-    border:5px;
-    border-color:black;
+    background-color:hotpink;
 }
 #container{
     text-align: center;
