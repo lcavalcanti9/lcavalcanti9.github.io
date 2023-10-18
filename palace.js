@@ -28,11 +28,13 @@ curtainsi.src= "curtains.PNG";
 let posx = 360;
 let posy = 75;
 
+//chair variables
 var chair1 = 0;
 var chair2 = 0;
 var chair3 = 0;
 var chair4 = 0;
 
+//this function compiles all of the background images at the same time - easier as one command
 function drawBG(){
     ctx.drawImage(backgroundi,0, 0,window.innerWidth, window.innerHeight);
     ctx.drawImage(rugi,0, 0,window.innerWidth, window.innerHeight);
@@ -48,32 +50,31 @@ function drawCharac(){
     ctx.closePath();
 }
 
-function getToChair(a, b, c){
+function reachChair(){
+    getToChair(300,750,chair1);
+}
+
+function getToChair(a, b, chair){
+    console.log("a=", a);
     ctx.clearRect(0,0,500,500);
-    if (posy<300){
+    if (posy<a){
         console.log("yes");
         posy+=0.5; 
     }
-    else if (posy>=300){
+    else if (posy>=a){
         console.log("no");
-        if (posx<=1000){
+        if (posx<=b){
             posx+=0.5;
         }
-        else if (posx > 1000){
-            c=1;
+        else if (posx>b){
+            chair=1;
+            console.log(chair);
         }
     }
     drawBG();
     drawCharac();
-    requestAnimationFrame(getToChair);
+    requestAnimationFrame(reachChair);
 }
 
-getToChair(60, 30, chair1);
-console.log(chair1);
-    drawBG();
-    drawCharac();
-    requestAnimationFrame(getToChair);
-}
-
-getToChair(60, 30, chair1);
+getToChair(300, 750, chair1);
 console.log(chair1);
