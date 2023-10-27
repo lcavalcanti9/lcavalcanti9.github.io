@@ -1,14 +1,14 @@
-//fetches canvas from HTML
-//*const = variable that never changes, will stay the same
+// fetches canvas from HTML
+// *const = variable that never changes, will stay the same
 const palace = document.getElementById("palace");
 // "rendering interface" variable
 const ctx = palace.getContext("2d");
 
-//these will make the canvas size according to the window/monitor size
+// these will make the canvas size according to the window/monitor size
 palace.width = window.innerWidth;
 palace.height = window.innerHeight;
 
-//prints height and width of window - just to help programmer, no functionality beyond that
+// prints height and width of window - just to help programmer, no functionality beyond that
 console.log(palace.width= window.innerWidth); //1366 - my personal window sizes, serve as guidelines for other numbers and positions
 console.log(palace.height=window.innerHeight); //651
 
@@ -49,8 +49,10 @@ var chair2 = 0;
 var chair3 = 0;
 var chair4 = 0;
 
-// level
+// level&XP
 var level = 1;
+var xp=0;
+
 
 // this function compiles all of the background images at the same time - easier as one command
 function drawBG(){
@@ -71,50 +73,54 @@ function reachChair(){
     getToChair(305,770,chair1);
 }
 
+// another loophole function
 function leavingChair(){
     leaveChair(50,360,chair1);
 }
 
+// bob's makeup
 function blobM(){
     ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
     console.log("blob");
     drawBG();
+    var progress = 0;
     ctx.drawImage(normalbob, 0,0,window.innerWidth, window.innerHeight);
+    // detects key presses
     window.addEventListener("keydown", e=>{
         console.log(e.key);
         if (e.key=="1"){
             ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-            console.log("blob");
             drawBG();
             ctx.drawImage(facemaskbob, 0, 0, window.innerWidth, window.innerHeight);
         }
         else if(e.key=="2"){
             ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-            console.log("blob");
             drawBG();
             ctx.drawImage(blushbob, 0, 0, window.innerWidth, window.innerHeight);
         }
         else if(e.key=="3"){
             ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-            console.log("blob");
             drawBG();
-            ctx.drawImage(browbob, 0, 0, window.innerWidth, window.innerHeight);
+            ctx.drawImage(browbob, 0, 0, window.innerWidth, window.innerHeight)
         }
         else{
             palace.width = window.innerWidth;
             palace.height = window.innerHeight;
             leaveChair();
         };
-    })
+    });
+    xp+=50;
+    console.log(xp);
 }
 
+// spawns the little rectangle (to be a label in the future) and checks for the 1 key press
 function makeupButton(){
     palace.width = window.innerWidth;
     palace.height = window.innerHeight;
     ctx.clearRect(0,0,500,500);
     drawBG();
     drawCharac();
-    ctx.beginPath();
+    ctx.beginPath(); 
     ctx.strokeRect(760, 380, 20, 20);  
 
     window.addEventListener("keydown", e=>{
@@ -126,7 +132,7 @@ function makeupButton(){
 }
 
 // getting to chair 
-function getToChair(a, b, chair){
+function getToChair(a, b, c){
     palace.width = window.innerWidth;
     palace.height = window.innerHeight;
     ctx.clearRect(0,0,500,500);
@@ -138,11 +144,11 @@ function getToChair(a, b, chair){
         console.log("no");
         if (posx<=b){
             posx+=0.75;
-            bobwalk.src ="bobgoeswalk90.GIF";
+            bobwalk.src = "bobgoeswalk90.GIF";
         }
         else if (posx>b){
-            chair=1;
-            console.log(chair);
+            c=1;
+            console.log(c);
             console.log("yes")
             bobwalk.src="bobgoeswalk.GIF";  
             makeupButton(); 
@@ -154,7 +160,8 @@ function getToChair(a, b, chair){
     requestAnimationFrame(reachChair);
 }
 
-function leaveChair(a,b,c){
+// bye bye
+function leaveChair(a,b,c,f){
     palace.width = window.innerWidth;
     palace.height = window.innerHeight;
     ctx.clearRect(0,0,500,500);
@@ -176,5 +183,5 @@ function leaveChair(a,b,c){
 }
 
 // calling
-getToChair(300, 750, chair1, "bobwalk");
+getToChair(300, 750, chair1);
 console.log(chair1);
