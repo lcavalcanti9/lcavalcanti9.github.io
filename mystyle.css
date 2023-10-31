@@ -1,12 +1,12 @@
 body{
-    background-color:pink;
+    background-color:rgb(243, 195, 207);
 }
 h1,h2{
     color:black;
     text-align:center;
 }
 #palace{
-    background-color:hotpink;
+    background-color:rgb(243, 195, 207);
 }
 #container{
     text-align: center;
