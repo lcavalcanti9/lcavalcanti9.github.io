@@ -1,6 +1,7 @@
 // fetches canvas from HTML
 // *const = variable that never changes, will stay the same
 const palace = document.getElementById("palace");
+
 // "rendering interface" variable
 const ctx = palace.getContext("2d");
 
@@ -53,6 +54,33 @@ var chair4 = 0;
 var level = 1;
 var xp=0;
 
+function checkLevel(){
+    if (xp<100){
+        level=1;
+        ctx.font= "48px serif";
+        ctx.fillText("level:"+level, 100,100);
+        ctx.fillText("xp:"+xp, 100,150);
+    }
+    else if (xp>=100){
+        level=2;
+        ctx.font= "48px serif";
+        ctx.fillText("level:"+level, 100,100);
+        ctx.fillText("xp:"+xp, 100,150);
+    }
+    else if (xp>=250){
+        level=3;
+        ctx.font= "48px serif";
+        ctx.fillText("level:"+level, 100,100);
+        ctx.fillText("xp:"+xp, 100,150);
+    }
+    else if (xp>=500){
+        level=4;
+        ctx.font= "48px serif";
+        ctx.fillText("level:"+level, 100,100);
+        ctx.fillText("xp:"+xp, 100,150);
+    }
+}
+
 
 // this function compiles all of the background images at the same time - easier as one command
 function drawBG(){
@@ -61,6 +89,7 @@ function drawBG(){
     ctx.drawImage(wchairsi,0, 0, window.innerWidth, window.innerHeight);
     ctx.drawImage(curtainsi,0, 0,window.innerWidth, window.innerHeight);
     ctx.drawImage(gamechairsi,0, 0,window.innerWidth, window.innerHeight);
+    checkLevel();
 }
 
 // draws sprite
@@ -71,6 +100,18 @@ function drawCharac(){
 // this function only exists because the request animation frame one won't allow getToChair() to have parameters
 function reachChair(){
     getToChair(305,770,chair1);
+}
+
+function reachChair2(){
+    getToChair(305,770,chair2);
+}
+
+function reachChair3(){
+    getToChair(305,770,chair3);
+}
+
+function reachChair4(){
+    getToChair(305,770,chair4);
 }
 
 // another loophole function
@@ -109,8 +150,6 @@ function blobM(){
             leaveChair();
         };
     });
-    xp+=50;
-    console.log(xp);
 }
 
 // spawns the little rectangle (to be a label in the future) and checks for the 1 key press
@@ -152,7 +191,7 @@ function getToChair(a, b, c){
             console.log("yes")
             bobwalk.src="bobgoeswalk.GIF";  
             makeupButton(); 
-            exit;
+            exit();
         }
     }
     drawBG();
@@ -160,7 +199,7 @@ function getToChair(a, b, c){
     requestAnimationFrame(reachChair);
 }
 
-// bye bye
+// tchau tchau
 function leaveChair(a,b,c,f){
     palace.width = window.innerWidth;
     palace.height = window.innerHeight;
@@ -175,7 +214,7 @@ function leaveChair(a,b,c,f){
         posy-=0.75;
     }
     else if (posy>a){
-        exit
+        exit();
     }
     drawBG();
     drawCharac();
@@ -185,3 +224,17 @@ function leaveChair(a,b,c,f){
 // calling
 getToChair(300, 750, chair1);
 console.log(chair1);
+
+if (chair1==1){
+    reachChair1();
+}
+else if (chair2==1 && level>=2){
+    reachChair2();
+}
+else if (chair3==1 && level >=3){
+    reachChair3();
+}
+else if (chair4==1 && level){
+    reachChair4();
+}
+  
