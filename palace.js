@@ -91,14 +91,41 @@ var chair4 = 0;
 var level = 1;
 var xp=0;
 
+var blobx = 360;
+var bloby = 75;
+
+var paquitox = 360;
+var paquitoy = 75;
+
+var fefitox = 360;
+var fefitoy = 75;
+
+var baiacux = 360;
+var baiacuy = 75;
+
 function reset(){
     xp+=25;
     afish-=1;
-    posx = 360;
-    posy = 75;
+    if(fish==1){
+        bloby=75;
+        blobx=360;
+    }
+    else if(fish==2){
+        baiacuy=75;
+        baiacux=360;
+    }
+    else if(fish==3){
+        paquitoy=75;
+        paquitox=360;
+    }
+    else if(fish==4){
+        fefitoy=75;
+        fefitox=360;
+    }
     change0();
     console.log(afish);
     spawn();
+    return;
 }
 
 function sleep(ms){
@@ -115,7 +142,6 @@ function checkLevel(){
     else if (xp>=100){
         level=2;
         ctx.font= "48px oswald";
-        fishes[1]="fefito";
         ctx.fillText("level:"+level, 100, 100);
         ctx.fillText("xp:"+xp, 100, 150);
         wchairs.src="wchairs2.PNG";
@@ -124,14 +150,12 @@ function checkLevel(){
     else if (xp>=250){
         level=3;
         ctx.font= "48px oswald";
-        fishes[2]="baiacu";
         ctx.fillText("level:"+level, 100, 100);
         ctx.fillText("xp:"+xp, 100, 150);
     }
     else if (xp>=500){
         level=4;
         ctx.font= "48px oswald";
-        fishes[3]="blob";
         ctx.fillText("level:"+level, 100, 100);
         ctx.fillText("xp:"+xp, 100, 150);
     }
@@ -593,17 +617,56 @@ function makeupButton4(){
 
 // getting to chair 
 function getToChair(a, b, c){
+    if(fish==1){
+        posy=bloby;
+        posx=blobx;
+    }
+    else if(fish==2){
+        posy=baiacuy;
+        posx=baiacux;
+    }
+    else if(fish==3){
+        posy=paquitoy;
+        posx=paquitox;
+    }
+    else if(fish==4){
+        posy=fefitoy;
+        posx=fefitox;
+    }
+
     palace.width = window.innerWidth;
     palace.height = window.innerHeight;
     ctx.clearRect(0,0,500,500);
     if (posy<a){
         console.log("yes");
-        posy+=0.75; 
+        if(fish==1){
+            bloby+=1;
+        }
+        else if(fish==2){
+            baiacuy+=1;
+        }
+        else if(fish==3){
+            paquitoy+=1;
+        }
+        else if(fish==4){
+            fefitoy+=1;
+        } 
     }
     else if (posy>=a){
         console.log("no");
         if (posx<=b){
-            posx+=0.75;
+            if(fish==1){
+                blobx+=1;
+            }
+            else if(fish==2){
+                baiacux+=1;
+            }
+            else if(fish==3){
+                paquitox+=1;
+            }
+            else if(fish==4){
+                fefitox+=1;
+            }
             change90();
         }
         else if (posx>b){
@@ -611,6 +674,7 @@ function getToChair(a, b, c){
             console.log(c);
             console.log("yes")
             change0();  
+            spawn();
             makeupButton1(); 
             return;
         }
@@ -621,6 +685,9 @@ function getToChair(a, b, c){
     }
     else if(fish==2){
         drawBaiacu();
+        if(chair1==1){
+            makeupButton1();
+        }
     }
     else if(fish==3){
         drawPaquito();
@@ -636,15 +703,54 @@ function getToChair(a, b, c){
 function leaveChair(a,b,c){
     palace.width = window.innerWidth;
     palace.height = window.innerHeight;
+    if(fish==1){
+        posy=bloby;
+        posx=blobx;
+    }
+    else if(fish==2){
+        posy=baiacuy;
+        posx=baiacux;
+    }
+    else if(fish==3){
+        posy=paquitoy;
+        posx=paquitox;
+    }
+    else if(fish==4){
+        posy=fefitoy;
+        posx=fefitox;
+    }
+
     ctx.clearRect(0,0,500,500);
     if (posx>=b){
         change270();
-        posx-=0.75;
+        if(fish==1){
+            blobx-=1;
+        }
+        else if(fish==2){
+            baiacux-=1;
+        }
+        else if(fish==3){
+            paquitox-=1;
+        }
+        else if(fish==4){
+            fefitox-=1;
+        }
         c=0;
     }
     else if (posx<b){
         change180();
-        posy-=0.75;
+        if(fish==1){
+            bloby-=1;
+        }
+        else if(fish==2){
+            baiacuy-=1;
+        }
+        else if(fish==3){
+            paquitoy-=1;
+        }
+        else if(fish==4){
+            fefitoy-=1;
+        }
         if (posy<a){
             reset();
             return;
@@ -696,6 +802,9 @@ function spawn(){
         getToChair(700,300,chair4);
         afish+=1;
         gtc=4;
+    }
+    else{
+        return;
     }
 }
 
