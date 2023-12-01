@@ -126,18 +126,47 @@ function reset(){
     //console.log(afish);
     //console.log("reset");
     change0();
-    spawngen();
+    if (level==1){
+        spawngen();
+    }
+    else if (level==2&&fish==2){
+        spawnbob();
+    }
+    else if (level==2&&fish==1){
+        spawngen();
+    }
+    else if (level==3&&fish==3){
+        spawnbaiacu();
+    }
+    else if (level==3&&fish==2){
+        spawnbob();
+    }
+    else if (level==3&&fish==1){
+        spawngen();
+    }
+    else if (level==4&&fish==4){
+        spawnpaquito();
+    }
+    else if (level==4&&fish==3){
+        spawnbaiacu();
+    }
+    else if (level==4&&fish==2){
+        spawnbob();
+    }
+    else if (level==4&&fish==1){
+        spawngen();
+    }
     return;
 }
 
 function checkLevel(){
-    if (xp<100){
+    if (xp<50){
         level=1;
         ctx.font= "48px oswald";
         ctx.fillText("level:"+level, 100,100);
         ctx.fillText("xp:"+xp, 100,150);
     }
-    else if (xp>=100&&xp<150){
+    else if (xp>=50&&xp<150){
         level=2;
         ctx.font= "48px oswald";
         ctx.fillText("level:"+level, 100, 100);
@@ -146,7 +175,7 @@ function checkLevel(){
         gamechairs.src="gamechairs2.PNG"
         buttons.src="button2.PNG";
     }
-    else if (xp>=150&&xp<200){
+    else if (xp>=150&&xp<300){
         level=3;
         ctx.font= "48px oswald";
         ctx.fillText("level:"+level, 100, 100);
@@ -161,7 +190,7 @@ function checkLevel(){
         ctx.fillText("level:"+level, 100, 100);
         ctx.fillText("xp:"+xp, 100, 150);
         buttons.src="button4.PNG";
-        gamechairs.src="";
+        gamechairs.src="gamechairs4.PNG";
     }
 }
 
@@ -372,7 +401,7 @@ function baiacuM(){
     };
 }
 
-// baiacu's makeup
+// paquito's makeup
 function paquitoM(){
     ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
     //console.log("paquito");
@@ -385,19 +414,19 @@ function paquitoM(){
         if (e.key=="1"){
             ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
             drawBG();
-            ctx.drawImage(facemaskbaiacu, 0, 0, window.innerWidth, window.innerHeight);
+            ctx.drawImage(facemaskpaquito, 0, 0, window.innerWidth, window.innerHeight);
             ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
         }
         else if(e.key=="2"){
             ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
             drawBG();
-            ctx.drawImage(blushbaiacu, 0, 0, window.innerWidth, window.innerHeight);
+            ctx.drawImage(blushpaquito, 0, 0, window.innerWidth, window.innerHeight);
             ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
         }
         else if(e.key=="3"){
             ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
             drawBG();
-            ctx.drawImage(browbaiacu, 0, 0, window.innerWidth, window.innerHeight);
+            ctx.drawImage(browpaquito, 0, 0, window.innerWidth, window.innerHeight);
             ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
         }
         else{
@@ -415,25 +444,26 @@ function fefitoM(){
     //console.log("fefito");
     drawBG();
     ctx.drawImage(normalfefito, 0,0,window.innerWidth, window.innerHeight);
+    ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
     // detects key presses
     window.addEventListener("keydown", haha4);
     function haha4(e){
     if (e.key=="1"){
         ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
         drawBG();
-        ctx.drawImage(facemaskbaiacu, 0, 0, window.innerWidth, window.innerHeight);
+        ctx.drawImage(facemaskfefito, 0, 0, window.innerWidth, window.innerHeight);
         ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
     }
     else if(e.key=="2"){
         ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
         drawBG();
-        ctx.drawImage(blushbaiacu, 0, 0, window.innerWidth, window.innerHeight);
+        ctx.drawImage(blushfefito, 0, 0, window.innerWidth, window.innerHeight);
         ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
     }
     else if(e.key=="3"){
         ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
         drawBG();
-        ctx.drawImage(browbaiacu, 0, 0, window.innerWidth, window.innerHeight);
+        ctx.drawImage(browfefito, 0, 0, window.innerWidth, window.innerHeight);
         ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
     }
     else{
@@ -489,37 +519,20 @@ function makeupButton3(){
     palace.height = window.innerHeight;
     ctx.clearRect(0,0,500,500);
     drawBG();
-    if(fish==1){
-        drawBob();
-    }
-    else if(fish==2){
-        drawBaiacu();
-    }
-    else if(fish==3){
-        drawPaquito();
-    }
-    else if(fish==4){
-        drawFefito();
-    }
+    drawPaquito();
     ctx.beginPath(); 
     ctx.strokeRect(760, 380, 20, 20);  
 
-    window.addEventListener("keydown", e=>{
+    window.addEventListener("keydown",here3)
+    function here3(e){
         if (e.key=="3"){
-            if(fish==1){
-                blobM();
-            }
-            else if(fish==2){
-                baiacuM();
-            }
-            else if(fish==3){
                 paquitoM();
+                window.removeEventListener("keydown", here3);
             }
-            else if(fish==4){
-                fefitoM();
-            }
+        else if (e.key!="3"){
+            makeupButton3();
         }
-    });
+    }
 }
 
 function makeupButton4(){
@@ -527,37 +540,20 @@ function makeupButton4(){
     palace.height = window.innerHeight;
     ctx.clearRect(0,0,500,500);
     drawBG();
-    if(fish==1){
-        drawBob();
-    }
-    else if(fish==2){
-        drawBaiacu();
-    }
-    else if(fish==3){
-        drawPaquito();
-    }
-    else if(fish==4){
-        drawFefito();
-    }
+    drawFefito();
     ctx.beginPath(); 
     ctx.strokeRect(760, 380, 20, 20);  
 
-    window.addEventListener("keydown", e=>{
+    window.addEventListener("keydown",here4)
+    function here4(e){
         if (e.key=="4"){
-            if(fish==1){
-                blobM();
-            }
-            else if(fish==2){
-                baiacuM();
-            }
-            else if(fish==3){
-                paquitoM();
-            }
-            else if(fish==4){
                 fefitoM();
+                window.removeEventListener("keydown", here4);
             }
+        else if (e.key!="4"){
+            makeupButton4();
         }
-    });
+    }
 }
 
 // getting to chair -- CHECK
@@ -599,16 +595,16 @@ function getToChair(a, b, c){
     else if (posy>=a){
         if (posx<b){
             if(fish==1){
-                blobx+=1.5;
+                blobx+=3;
             }
             else if(fish==2){
-                baiacux+=1;
+                baiacux+=3;
             }
             else if(fish==3){
-                paquitox+=1;
+                paquitox+=3;
             }
             else if(fish==4){
-                fefitox+=1;
+                fefitox+=3;
             }
             change90();
         }
@@ -680,10 +676,10 @@ function leaveChair(a,b,c){
             baiacux-=3;
         }
         else if(fish==3){
-            paquitox-=1;
+            paquitox-=3;
         }
         else if(fish==4){
-            fefitox-=1;
+            fefitox-=3;
         }
         c=0;
     }
@@ -713,9 +709,6 @@ function leaveChair(a,b,c){
     }
     else if(fish==2){
         drawBaiacu();
-        if (chair1==1){
-            makeupButton1();
-        }
     }
     else if(fish==3){
         drawPaquito();
@@ -771,7 +764,7 @@ function spawnbob(){
         afish+=1;
         gtc=1;
         console.log(bobwalk.src);
-    }
+}
 
 function spawnbaiacu(){
     console.log("SPAWN");
@@ -809,7 +802,7 @@ function spawngen(){
     else if(level==3 ){
         spawnpaquito();
     }
-    else if(level>=4&&afish>=3&&chair4==0){
+    else if(level==4){
         spawnfefito();
     }
     else{
