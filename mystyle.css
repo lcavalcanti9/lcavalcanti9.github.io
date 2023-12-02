@@ -1,5 +1,6 @@
 body{
     background-color:rgb(243, 195, 207);
+    overflow:hidden;
 }
 h1,h2{
     color:black;
