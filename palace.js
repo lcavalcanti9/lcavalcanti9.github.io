@@ -6,12 +6,9 @@ const palace = document.getElementById("palace");
 const ctx = palace.getContext("2d");
 
 // these will make the canvas size according to the window/monitor size
-palace.width = window.innerWidth;
-palace.height = window.innerHeight;
+palace.width = 1350;
+palace.height = 650;
 
-// prints height and width of window - just to help programmer, no functionality beyond that
-console.log(palace.width= window.innerWidth); //1366 - my personal window sizes, serve as guidelines for other numbers and positions
-console.log(palace.height=window.innerHeight); //651
 
 // BACKGROUND fetch images from folder and put them into variables
 var background = new Image();
@@ -196,12 +193,12 @@ function checkLevel(){
 
 // this function compiles all of the background images at the same time - easier as one command
 function drawBG(){
-    ctx.drawImage(background,0, 0,window.innerWidth, window.innerHeight);
-    ctx.drawImage(rug,0, 0,window.innerWidth, window.innerHeight);
-    ctx.drawImage(wchairs,0, 0, window.innerWidth, window.innerHeight);
-    ctx.drawImage(curtains,0, 0,window.innerWidth, window.innerHeight);
-    ctx.drawImage(gamechairs,0, 0,window.innerWidth, window.innerHeight);
-    ctx.drawImage(buttons,0, 0,window.innerWidth, window.innerHeight);
+    ctx.drawImage(background,0, 0,1350,650);
+    ctx.drawImage(rug,0, 0,1350,650);
+    ctx.drawImage(wchairs,0, 0, 1350,650);
+    ctx.drawImage(curtains,0, 0,1350,650);
+    ctx.drawImage(gamechairs,0, 0,1350, 650);
+    ctx.drawImage(buttons,0, 0,1350, 650);
     checkLevel();
 }
 
@@ -286,7 +283,6 @@ function change270(){
 function reachChair(){
     if (gtc==1){
         getToChair(275,650,chair1);
-        console.log(bobwalk.src);
     }
     else if(gtc==2){
         getToChair(300,1000,chair2);
@@ -317,35 +313,34 @@ function leavingChair(){
 
 // bob's makeup
 function blobM(){
-    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-    //console.log("blob");
+    ctx.clearRect(0,0,1350,650);
     drawBG();
-    ctx.drawImage(normalbob, 0,0,window.innerWidth, window.innerHeight);
-    ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+    ctx.drawImage(normalbob, 0,0,1350,650);
+    ctx.drawImage(mbuttons, -50,0,1350,650);
     // detects key presses
     window.addEventListener("keydown", haha);
         function haha(e){
         if (e.key=="1"){
-            ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            ctx.clearRect(0,0,1350,650);
             drawBG();
-            ctx.drawImage(facemaskbob, 0, 0, window.innerWidth, window.innerHeight);
-            ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+            ctx.drawImage(facemaskbob, 0, 0, 1350,650);
+            ctx.drawImage(mbuttons, -50,0,1350,650);
         }
         else if(e.key=="2"){
-            ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            ctx.clearRect(0,0,1350,650);
             drawBG();
-            ctx.drawImage(blushbob, 0, 0, window.innerWidth, window.innerHeight);
-            ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+            ctx.drawImage(blushbob, 0, 0, 1350,650);
+            ctx.drawImage(mbuttons, -50,0,1350,650);
         }
         else if(e.key=="3"){
-            ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            ctx.clearRect(0,0,1350,650);
             drawBG();
-            ctx.drawImage(browbob, 0, 0, window.innerWidth, window.innerHeight);
-            ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+            ctx.drawImage(browbob, 0, 0, 1350,650);
+            ctx.drawImage(mbuttons, -50,0,1350,650);
         }
         else{
-            palace.width = window.innerWidth;
-            palace.height = window.innerHeight;
+            palace.width = 1350,650;
+            palace.height = 1350,650;
             if (gtc==1){
                 leaveChair(-50,360,chair1);
             }
@@ -366,34 +361,35 @@ function blobM(){
 
 // baiacu's makeup
 function baiacuM(){
-    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+    ctx.clearRect(0,0,1350,650);
     //console.log("baiacu");
     drawBG();
-    ctx.drawImage(normalbaiacu, 0,0,window.innerWidth, window.innerHeight);
+    ctx.drawImage(normalbaiacu, 0,0,1350,650);
+    ctx.drawImage(mbuttons, -50,0,1350,650);
     // detects key presses
     window.addEventListener("keydown", haha2);
         function haha2(e){
         if (e.key=="1"){
-            ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            ctx.clearRect(0,0,1350,650);
             drawBG();
-            ctx.drawImage(facemaskbaiacu, 0, 0, window.innerWidth, window.innerHeight);
-            ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+            ctx.drawImage(facemaskbaiacu, 0, 0, 1350,650);
+            ctx.drawImage(mbuttons, -50,0,1350,650);
         }
         else if(e.key=="2"){
-            ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            ctx.clearRect(0,0,1350,650);
             drawBG();
-            ctx.drawImage(blushbaiacu, 0, 0, window.innerWidth, window.innerHeight);
-            ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+            ctx.drawImage(blushbaiacu, 0, 0, 1350,650);
+            ctx.drawImage(mbuttons, -50,0,1350,650);
         }
         else if(e.key=="3"){
-            ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            ctx.clearRect(0,0,1350,650);
             drawBG();
-            ctx.drawImage(browbaiacu, 0, 0, window.innerWidth, window.innerHeight);
-            ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+            ctx.drawImage(browbaiacu, 0, 0, 1350,650);
+            ctx.drawImage(mbuttons, -50,0,1350,650);
         }
         else{
-            palace.width = window.innerWidth;
-            palace.height = window.innerHeight;
+            palace.width = 1350,650;
+            palace.height = 1350,650;
             leaveChair(-50,370,chair2);
             window.removeEventListener("keydown", haha2);
             return;
@@ -403,35 +399,32 @@ function baiacuM(){
 
 // paquito's makeup
 function paquitoM(){
-    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-    //console.log("paquito");
+    ctx.clearRect(0,0,1350,650);
     drawBG();
-    var progress = 0;
-    ctx.drawImage(normalpaquito, 0,0,window.innerWidth, window.innerHeight);
+    ctx.drawImage(normalpaquito, 0,0,1350,650);
+    ctx.drawImage(mbuttons, -50,0,1350,650);
     // detects key presses
     window.addEventListener("keydown", haha3);
         function haha3(e){
         if (e.key=="1"){
-            ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            ctx.clearRect(0,0,1350,650);
             drawBG();
-            ctx.drawImage(facemaskpaquito, 0, 0, window.innerWidth, window.innerHeight);
-            ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+            ctx.drawImage(facemaskpaquito, 0, 0, 1350,650);
+            ctx.drawImage(mbuttons, -50,0,1350,650);
         }
         else if(e.key=="2"){
-            ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            ctx.clearRect(0,0,1350,650);
             drawBG();
-            ctx.drawImage(blushpaquito, 0, 0, window.innerWidth, window.innerHeight);
-            ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+            ctx.drawImage(blushpaquito, 0, 0, 1350,650);
+            ctx.drawImage(mbuttons, -50,0,1350,650);
         }
         else if(e.key=="3"){
-            ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+            ctx.clearRect(0,0,1350,650);
             drawBG();
-            ctx.drawImage(browpaquito, 0, 0, window.innerWidth, window.innerHeight);
-            ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+            ctx.drawImage(browpaquito, 0, 0, 1350,650);
+            ctx.drawImage(mbuttons, -50,0,1350,650);
         }
         else{
-            palace.width = window.innerWidth;
-            palace.height = window.innerHeight;
             leaveChair(-50,380,chair3);
             window.removeEventListener("keydown", haha3);
             return;
@@ -440,35 +433,33 @@ function paquitoM(){
 }
 
 function fefitoM(){
-    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+    ctx.clearRect(0,0,1350,650);
     //console.log("fefito");
     drawBG();
-    ctx.drawImage(normalfefito, 0,0,window.innerWidth, window.innerHeight);
-    ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+    ctx.drawImage(normalfefito, 0,0,1350,650);
+    ctx.drawImage(mbuttons, -50,0,1350,650);
     // detects key presses
     window.addEventListener("keydown", haha4);
     function haha4(e){
     if (e.key=="1"){
-        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+        ctx.clearRect(0,0,1350,650);
         drawBG();
-        ctx.drawImage(facemaskfefito, 0, 0, window.innerWidth, window.innerHeight);
-        ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+        ctx.drawImage(facemaskfefito, 0, 0, 1350,650);
+        ctx.drawImage(mbuttons, -50,0,1350,650);
     }
     else if(e.key=="2"){
-        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+        ctx.clearRect(0,0,1350,650);
         drawBG();
-        ctx.drawImage(blushfefito, 0, 0, window.innerWidth, window.innerHeight);
-        ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+        ctx.drawImage(blushfefito, 0, 0, 1350,650);
+        ctx.drawImage(mbuttons, -50,0,1350,650);
     }
     else if(e.key=="3"){
-        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+        ctx.clearRect(0,0,1350,650);
         drawBG();
-        ctx.drawImage(browfefito, 0, 0, window.innerWidth, window.innerHeight);
-        ctx.drawImage(mbuttons, 0,0,window.innerWidth, window.innerHeight);
+        ctx.drawImage(browfefito, 0, 0, 1350,650);
+        ctx.drawImage(mbuttons, -50,0,1350,650);
     }
     else{
-        palace.width = window.innerWidth;
-        palace.height = window.innerHeight;
         leaveChair(-50,390,chair4);
         window.removeEventListener("keydown", haha4);
         return;
@@ -478,29 +469,25 @@ function fefitoM(){
 
 // spawns the little rectangle (to be a label in the future) and checks for the 1 key press
 function makeupButton1(){
-    palace.width = window.innerWidth;
-    palace.height = window.innerHeight;
-    ctx.clearRect(0,0,500,500);
+    ctx.clearRect(0,0,1350,650);
     drawBG();
     drawBob();
-
     window.addEventListener("keydown",here)
     function here(e){
         if (e.key=="1"){
                 blobM();
                 window.removeEventListener("keydown", here);
             }
+        else if (e.key!="1"){
+            makeupButton1();
         }
+    }
 }
 
 function makeupButton2(){
-    palace.width = window.innerWidth;
-    palace.height = window.innerHeight;
-    ctx.clearRect(0,0,500,500);
+    ctx.clearRect(0,0,1350,650);
     drawBG();
     drawBaiacu();
-    ctx.beginPath(); 
-    ctx.strokeRect(760, 380, 20, 20);  
 
     window.addEventListener("keydown",here2)
     function here2(e){
@@ -515,13 +502,9 @@ function makeupButton2(){
 }
 
 function makeupButton3(){
-    palace.width = window.innerWidth;
-    palace.height = window.innerHeight;
-    ctx.clearRect(0,0,500,500);
+    ctx.clearRect(0,0,1350,650);
     drawBG();
     drawPaquito();
-    ctx.beginPath(); 
-    ctx.strokeRect(760, 380, 20, 20);  
 
     window.addEventListener("keydown",here3)
     function here3(e){
@@ -536,13 +519,9 @@ function makeupButton3(){
 }
 
 function makeupButton4(){
-    palace.width = window.innerWidth;
-    palace.height = window.innerHeight;
-    ctx.clearRect(0,0,500,500);
+    ctx.clearRect(0,0,1350,650);
     drawBG();
     drawFefito();
-    ctx.beginPath(); 
-    ctx.strokeRect(760, 380, 20, 20);  
 
     window.addEventListener("keydown",here4)
     function here4(e){
@@ -575,9 +554,7 @@ function getToChair(a, b, c){
         posx=fefitox;
     }
 
-    palace.width = window.innerWidth;
-    palace.height = window.innerHeight;
-    ctx.clearRect(0,0,500,500);
+    ctx.clearRect(0,0,1350,650);
     if (posy<a){
         if(fish==1){
             bloby+=3;
@@ -632,9 +609,6 @@ function getToChair(a, b, c){
     }
     else if(fish==2){
         drawBaiacu();
-        if(chair1==1){
-            makeupButton1();
-        };
     }
     else if(fish==3){
         drawPaquito();
@@ -647,8 +621,6 @@ function getToChair(a, b, c){
 
 // tchau tchau
 function leaveChair(a,b,c){
-    palace.width = window.innerWidth;
-    palace.height = window.innerHeight;
     if(fish==1){
         posy=bloby;
         posx=blobx;
@@ -692,14 +664,13 @@ function leaveChair(a,b,c){
             baiacuy-=3;
         }
         else if(fish==3){
-            paquitoy-=1;
+            paquitoy-=3;
         }
         else if(fish==4){
-            fefitoy-=1;
+            fefitoy-=3;
         }
         if (posy<a){
             reset();
-            //console.log("LEFT");
             return;
         }
     }
@@ -758,23 +729,18 @@ var gtc=0;
 }*/
 
 function spawnbob(){
-        console.log("SPAWN");
-        fish=1;
-        getToChair(300,700,chair1);
-        afish+=1;
-        gtc=1;
-        console.log(bobwalk.src);
+    fish=1;
+    getToChair(300,700,chair1);
+    afish+=1;
+    gtc=1;
 }
 
 function spawnbaiacu(){
-    console.log("SPAWN");
     fish=2;
     change0();
     getToChair(300,800,chair2);
     afish+=1;
     gtc=2;
-    console.log(baiacuwalk.src);
-    console.log("shouldve gotten to chair");
 }
 
 function spawnpaquito(){
