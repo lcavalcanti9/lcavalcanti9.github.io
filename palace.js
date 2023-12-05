@@ -158,13 +158,13 @@ function checkLevel(){
         level=1;
         ctx.font= "48px oswald";
         ctx.fillText("level:"+level, 100,100);
-        ctx.fillText("xp:"+xp, 100,150);
+        ctx.fillText("XP:"+xp, 100,150);
     }
     else if (xp>=50&&xp<150){
         level=2;
         ctx.font= "48px oswald";
         ctx.fillText("level:"+level, 100, 100);
-        ctx.fillText("xp:"+xp, 100, 150);
+        ctx.fillText("XP:"+xp, 100, 150);
         wchairs.src="wchairs2.PNG";
         gamechairs.src="gamechairs2.PNG"
         buttons.src="button2.PNG";
@@ -173,7 +173,7 @@ function checkLevel(){
         level=3;
         ctx.font= "48px oswald";
         ctx.fillText("level:"+level, 100, 100);
-        ctx.fillText("xp:"+xp, 100, 150);
+        ctx.fillText("XP:"+xp, 100, 150);
         wchairs.src="wchairs3.PNG";
         buttons.src="button3.PNG";
         gamechairs.src="gamechairs3.PNG";
@@ -182,7 +182,7 @@ function checkLevel(){
         level=4;
         ctx.font= "48px oswald";
         ctx.fillText("level:"+level, 100, 100);
-        ctx.fillText("xp:"+xp, 100, 150);
+        ctx.fillText("XP:"+xp, 100, 150);
         buttons.src="button4.PNG";
         gamechairs.src="gamechairs4.PNG";
     }
@@ -477,7 +477,9 @@ function makeupButton1(){
                 window.removeEventListener("keydown", here);
             }
         else if (e.key!="1"){
+            window.removeEventListener("keydown", here);
             makeupButton1();
+            return;
         }
     }
 }
@@ -495,7 +497,9 @@ function makeupButton2(){
                 window.removeEventListener("keydown", here2);
             }
         else if (e.key!="2"){
+            window.removeEventListener("keydown", here2);
             makeupButton2();
+            return;
         }
     }
 }
@@ -513,7 +517,9 @@ function makeupButton3(){
                 window.removeEventListener("keydown", here3);
             }
         else if (e.key!="3"){
+            window.removeEventListener("keydown", here3);
             makeupButton3();
+            return;
         }
     }
 }
@@ -531,7 +537,9 @@ function makeupButton4(){
                 window.removeEventListener("keydown", here4);
             }
         else if (e.key!="4"){
+            window.removeEventListener("keydown", here4);
             makeupButton4();
+            return;
         }
     }
 }
