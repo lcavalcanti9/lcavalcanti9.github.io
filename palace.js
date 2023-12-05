@@ -24,7 +24,7 @@ curtains.src= "curtains.PNG";
 var buttons=new Image();
 buttons.src="button1.PNG";
 
-// FISH options: bob, fefito, paquito, baiacu
+// FISH option images: bob/burbuja/blob, fefito, paquito, baiacu
 var bobwalk = new Image();
 bobwalk.src="bobgoeswalk.GIF";
 var blushbob = new Image();
@@ -76,9 +76,6 @@ mbuttons.src="mbuttons.PNG";
 let posx = 360;
 let posy = 75;
 
-// how many fish fish
-var afish = 0;
-
 // chair variables
 var chair1 = 0;
 var chair2 = 0;
@@ -89,6 +86,7 @@ var chair4 = 0;
 var level = 1;
 var xp=0;
 
+// fish x and y variables for moving in getToChair() and leaveChair()
 var blobx = 360;
 var bloby = 75;
 
@@ -103,7 +101,6 @@ var baiacuy = 75;
 
 function reset(){
     xp+=25;
-    afish-=1;
     if(fish==1){
         bloby=75;
         blobx=360;
@@ -219,6 +216,7 @@ function drawFefito(){
     ctx.drawImage(fefitowalk, posx, posy, 75,75);
 }
 
+// rotates fish by changing image src
 function change0(){
     if(fish==1){
         bobwalk.src="bobgoeswalk.GIF";
@@ -282,20 +280,20 @@ function change270(){
 // this function only exists because the request animation frame one won't allow getToChair() to have parameters
 function reachChair(){
     if (gtc==1){
-        getToChair(275,650,chair1);
+        getToChair(300,690,chair1);
     }
     else if(gtc==2){
-        getToChair(300,1000,chair2);
+        getToChair(300,975,chair2);
     }
     else if(gtc==3){
-        getToChair(400,700,chair3);
+        getToChair(425,685,chair3);
     }
     else if(gtc==4){
-        getToChair(400,1000,chair4);
+        getToChair(425,975,chair4);
     }
 }
 
-// another loophole function
+// another loophole function - continues leaveChair()
 function leavingChair(){
     if (gtc==1){
         leaveChair(-50,360,chair1);
@@ -311,7 +309,7 @@ function leavingChair(){
     }
 }
 
-// bob's makeup
+// bob's makeup (zoom in+ event listeners for adding makeup)
 function blobM(){
     ctx.clearRect(0,0,1350,650);
     drawBG();
@@ -338,7 +336,7 @@ function blobM(){
             ctx.drawImage(browbob, 0, 0, 1350,650);
             ctx.drawImage(mbuttons, -50,0,1350,650);
         }
-        else{
+        else if (e.key=="4"){
             palace.width = 1350,650;
             palace.height = 1350,650;
             if (gtc==1){
@@ -359,7 +357,7 @@ function blobM(){
     };
 }
 
-// baiacu's makeup
+// baiacu's makeup (zoom in+ event listeners for adding makeup)
 function baiacuM(){
     ctx.clearRect(0,0,1350,650);
     //console.log("baiacu");
@@ -387,7 +385,7 @@ function baiacuM(){
             ctx.drawImage(browbaiacu, 0, 0, 1350,650);
             ctx.drawImage(mbuttons, -50,0,1350,650);
         }
-        else{
+        else if (e.key=="4"){
             palace.width = 1350,650;
             palace.height = 1350,650;
             leaveChair(-50,370,chair2);
@@ -397,7 +395,7 @@ function baiacuM(){
     };
 }
 
-// paquito's makeup
+// paquito's makeup (zoom in+ event listeners for adding makeup)
 function paquitoM(){
     ctx.clearRect(0,0,1350,650);
     drawBG();
@@ -424,7 +422,7 @@ function paquitoM(){
             ctx.drawImage(browpaquito, 0, 0, 1350,650);
             ctx.drawImage(mbuttons, -50,0,1350,650);
         }
-        else{
+        else if (e.key=="4"){
             leaveChair(-50,380,chair3);
             window.removeEventListener("keydown", haha3);
             return;
@@ -432,9 +430,9 @@ function paquitoM(){
     };
 }
 
+// fefito's makeup (zoom in+ event listeners for adding makeup)
 function fefitoM(){
     ctx.clearRect(0,0,1350,650);
-    //console.log("fefito");
     drawBG();
     ctx.drawImage(normalfefito, 0,0,1350,650);
     ctx.drawImage(mbuttons, -50,0,1350,650);
@@ -459,7 +457,7 @@ function fefitoM(){
         ctx.drawImage(browfefito, 0, 0, 1350,650);
         ctx.drawImage(mbuttons, -50,0,1350,650);
     }
-    else{
+    else if (e.key=="4"){
         leaveChair(-50,390,chair4);
         window.removeEventListener("keydown", haha4);
         return;
@@ -467,7 +465,7 @@ function fefitoM(){
 };
 }
 
-// spawns the little rectangle (to be a label in the future) and checks for the 1 key press
+// checks for the "1" key press when the fish gets to the first chair
 function makeupButton1(){
     ctx.clearRect(0,0,1350,650);
     drawBG();
@@ -484,6 +482,7 @@ function makeupButton1(){
     }
 }
 
+// checks for the "2" key press when the fish gets to the second chair
 function makeupButton2(){
     ctx.clearRect(0,0,1350,650);
     drawBG();
@@ -501,6 +500,7 @@ function makeupButton2(){
     }
 }
 
+// checks for the "3" key press when the fish gets to the third chair
 function makeupButton3(){
     ctx.clearRect(0,0,1350,650);
     drawBG();
@@ -518,6 +518,7 @@ function makeupButton3(){
     }
 }
 
+// checks for the "4" key press when the fish gets to the fourth chair
 function makeupButton4(){
     ctx.clearRect(0,0,1350,650);
     drawBG();
@@ -535,7 +536,7 @@ function makeupButton4(){
     }
 }
 
-// getting to chair -- CHECK
+// getting to chair
 function getToChair(a, b, c){
     if(fish==1){
         posy=bloby;
@@ -619,7 +620,7 @@ function getToChair(a, b, c){
     requestAnimationFrame(reachChair)
 }
 
-// tchau tchau
+// bye bye (chair->door)
 function leaveChair(a,b,c){
     if(fish==1){
         posy=bloby;
@@ -690,48 +691,12 @@ function leaveChair(a,b,c){
     requestAnimationFrame(leavingChair);                 
 }
 
+// gtc = get to chair
 var gtc=0;
-
-/*function spawn(){
-    checkLevel();
-    if(level>=1&&afish==0&&chair1==0){
-        console.log("SPAWN");
-        fish=1;
-        getToChair(700,300,chair1);
-        afish+=1;
-        gtc=1;
-        console.log(bobwalk.src);
-
-        if(level>=2&&afish>=1&&chair2==0){
-            console.log("it entrered this part");
-            fish=2;
-            getToChair(700,300,chair2);
-            console.log("shouldve gotten to chair");
-            afish+=1;
-            gtc=2;
-        }
-    }
-    else if(level>=3&&afish>=2&&chair3==0){
-        fish=3;
-        getToChair(700,300,chair3);
-        afish+=1;
-        gtc=3;
-    }
-    else if(level>=4&&afish>=3&&chair4==0){
-        fish=4;
-        getToChair(700,300,chair4);
-        afish+=1;
-        gtc=4;
-    }
-    else{
-        return;
-    }
-}*/
 
 function spawnbob(){
     fish=1;
     getToChair(300,700,chair1);
-    afish+=1;
     gtc=1;
 }
 
@@ -739,21 +704,18 @@ function spawnbaiacu(){
     fish=2;
     change0();
     getToChair(300,800,chair2);
-    afish+=1;
     gtc=2;
 }
 
 function spawnpaquito(){
     fish=3;
     getToChair(700,300,chair3);
-    afish+=1;
     gtc=3;
 }
 
 function spawnfefito(){
     fish=4;
     getToChair(700,300,chair4);
-    afish+=1;
     gtc=4;
 }
 
